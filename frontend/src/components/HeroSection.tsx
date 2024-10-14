@@ -1,4 +1,4 @@
-import React from 'react';
+
 import chatImage from '../assets/young-boy-and-girl-doing-online-chatting-3d-character-illustration-png.webp';
 // Ensure the path is correct
 
