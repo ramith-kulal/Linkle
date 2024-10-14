@@ -40,7 +40,7 @@ function Chat() {
 
   const ensureSocketConnection = () => {
     if (!socket || !socket.connected) {
-      socket = io('http://localhost:3001');
+      socket = io('https://linkle1.onrender.com');
 
       socket.on('chatMessage', (message: string) => {
         setMessages((prevMessages) => [...prevMessages, { text: message, user: 'other' }]);
