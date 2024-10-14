@@ -1,4 +1,4 @@
-# Linkle Chat Application
+# Linkle Chat 
 
 Linkle is a real-time chat application that connects users through WebSockets. It allows users to send and receive messages instantly while providing a seamless user experience.
 
