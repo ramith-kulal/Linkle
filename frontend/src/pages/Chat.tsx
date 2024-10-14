@@ -46,13 +46,13 @@ function Chat() {
         setMessages((prevMessages) => [...prevMessages, { text: message, user: 'other' }]);
       });
 
-      socket.on('connected', ({ message }) => {
+      socket.on('connected', ({ message: string}) => {
         showPopup(message, 'green', 3000);
         setConnected(true);
         setWaitingForConnection(false);
       });
 
-      socket.on('disconnected', ({ message }) => {
+      socket.on('disconnected', ({ message: string }) => {
         showPopup(message, 'red', 3000);
         setConnected(false);
         setInput('');
