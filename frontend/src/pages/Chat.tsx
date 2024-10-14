@@ -42,18 +42,18 @@ function Chat() {
     if (!socket || !socket.connected) {
       socket = io('https://linkle1.onrender.com');
 
-      socket.on('chatMessage', (message: string) => {
-        setMessages((prevMessages) => [...prevMessages, { text: message, user: 'other' }]);
+      socket.on('chatMessage', (message: Message) => {
+        setMessages((prevMessages) => [...prevMessages, message]);
       });
 
-      socket.on('connected', ({ message: string}) => {
-        showPopup(message, 'green', 3000);
+      socket.on('connected', (data: { message: string }) => {
+        showPopup(data.message, 'green', 3000);
         setConnected(true);
         setWaitingForConnection(false);
       });
 
-      socket.on('disconnected', ({ message: string }) => {
-        showPopup(message, 'red', 3000);
+      socket.on('disconnected', (data: { message: string }) => {
+        showPopup(data.message, 'red', 3000);
         setConnected(false);
         setInput('');
       });
@@ -77,7 +77,7 @@ function Chat() {
       showPopup('Waiting for another user to connect...', 'blue');
 
       ensureSocketConnection();
-      setMessages([]) // Clear messages when trying to connect to a new user
+      setMessages([]); // Clear messages when trying to connect to a new user
 
       // Emit findNewUser with or without interest
       socket.emit('findNewUser', interest || null);
@@ -98,8 +98,9 @@ function Chat() {
   const sendMessage = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input && connected) {
-      socket.emit('chatMessage', input);
-      setMessages((prevMessages) => [...prevMessages, { text: input, user: 'me' }]);
+      const messageToSend: Message = { text: input, user: 'me' };
+      socket.emit('chatMessage', messageToSend);
+      setMessages((prevMessages) => [...prevMessages, messageToSend]);
       setInput('');
     }
   };
@@ -117,7 +118,6 @@ function Chat() {
       {/* Left Section for Quotes */}
       <div className="w-full md:w-1/4 p-5 flex flex-col justify-between">
         <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
-          
           <p className="text-sm italic">{quote}</p>
         </div>
         {!connected && (
