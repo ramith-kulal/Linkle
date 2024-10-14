@@ -1,50 +1,84 @@
-# React + TypeScript + Vite
+# Linkle Chat Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Linkle is a real-time chat application that connects users through WebSockets. It allows users to send and receive messages instantly while providing a seamless user experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Real-time Messaging**: Communicate instantly with other users.
+- **User Connection Management**: Connect and disconnect from other users.
+- **Message Notifications**: Receive notifications for connection status and new messages.
+- **Chat Clearing**: Clear chat messages when a new user connects.
+- **Dark-themed UI**: A modern dark theme for an enhanced user experience.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Frontend
 
-- Configure the top-level `parserOptions` property like this:
+- **React**: For building the user interface.
+- **TypeScript**: For type safety and improved development experience.
+- **Socket.IO Client**: For real-time communication with the server.
+- **Tailwind CSS**: For styling the application with utility-first CSS.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Backend
+
+- **Node.js**: JavaScript runtime for building the server.
+- **Express.js**: Web framework for building APIs.
+- **Socket.IO**: For real-time bi-directional communication between clients and server.
+
+## Deployment
+
+- **Frontend**: Deployed on [Vercel](https://vercel.com).
+- **Backend**: Deployed on [Render](https://render.com).
+
+## Installation
+
+To set up the project locally, follow these steps:
+
+### Prerequisites
+
+- Node.js (version 14 or later)
+- npm or Yarn
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/linkle.git
+cd linkle
+
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Frontend Setup
+- Navigate to the frontend directory:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+``` bash
+cd frontend
 ```
+- Install dependencies:
+
+```bash
+npm install
+```
+- Start the development server:
+
+```bash
+npm start
+```
+### Backend Setup
+- Navigate to the backend directory:
+
+``` bash
+cd backend
+```
+- Install dependencies:
+
+```bash
+npm install
+```
+- Start the  server:
+
+```bash
+node server.js
+```
+### Contributing:
+Contributions are welcome! Please feel free to open issues or submit pull requests.
+
