@@ -14,7 +14,6 @@ function Navbar() {
         setScrolled(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
 
     return () => {
