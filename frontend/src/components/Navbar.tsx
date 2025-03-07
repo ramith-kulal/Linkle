@@ -5,7 +5,7 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false); // State for mobile menu
 
-
+ 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
